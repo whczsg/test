@@ -12,9 +12,12 @@ import java.util.Map;
 @Component
 public class LoginInterceptor implements HandlerInterceptor {
 
+    /*preHandle()：
+    这是拦截器的核心方法，在请求到达 Controller 之前执行。
+    返回 true 表示请求继续执行（放行）；返回 false 表示请求被拦截，后续处理（Controller）不会被执行。*/
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        //令牌验证
+        //获取token，令牌验证
         String token = request.getHeader("Authorization");
         //验证token
         try {
