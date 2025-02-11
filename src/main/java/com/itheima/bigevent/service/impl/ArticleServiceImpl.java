@@ -1,5 +1,6 @@
 package com.itheima.bigevent.service.impl;
 
+import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.itheima.bigevent.mapper.ArticleMapper;
 import com.itheima.bigevent.pojo.Article;
@@ -46,6 +47,13 @@ public class ArticleServiceImpl implements ArticleService {
         Map<String,Object> map = ThreadLocalUtil.get();
         Integer userId = (Integer) map.get("id");
         List<Article> as = articleMapper.list(userId,categoryId,state);
-        return null;
+
+        //Page中提供了方法，可以获取PageHelper分页查询后 得到的总记录条数
+        Page<Article> p = (Page<Article>) as;
+
+        //把数据填充到PageBean对象中
+        pb.setTotal(p.getTotal());
+        pb.setItems(p.getResult());
+        return pb;
     }
 }

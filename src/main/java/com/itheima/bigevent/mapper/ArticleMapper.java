@@ -4,6 +4,8 @@ import com.itheima.bigevent.pojo.Article;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.List;
+
 @Mapper
 public interface ArticleMapper {
     //新增
@@ -12,4 +14,7 @@ public interface ArticleMapper {
             values(#{title},#{content},#{coverImg},#{state},#{categoryId},#{createUser},#{createTime},#{updateTime})
             """)
     void add(Article article);
+
+
+    List<Article> list(Integer userId, Integer categoryId, String state);
 }
