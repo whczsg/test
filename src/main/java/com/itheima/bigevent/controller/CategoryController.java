@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 /*
+    文章分类控制器类
     利用validation完成参数校验，在service层为category其属性赋值
     @Validated(Category.Add.class)分组校验
  */

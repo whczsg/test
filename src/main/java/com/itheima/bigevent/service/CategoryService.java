@@ -4,6 +4,9 @@ import com.itheima.bigevent.pojo.Category;
 
 import java.util.List;
 
+/*
+文章分类服务类
+ */
 public interface CategoryService {
     //新增分类
     void add(Category category);
