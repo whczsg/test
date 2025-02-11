@@ -1,12 +1,13 @@
 package com.itheima.bigevent.pojo;
 
 
-//统一响应结果
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/*
+统一响应结果类
+ */
 @NoArgsConstructor //无参构造
 @AllArgsConstructor //全参构造
 @Data //get set

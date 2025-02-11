@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Map;
 
+/*
+文章控制器类
+ */
 @RestController
 @RequestMapping("/article")
 public class ArticleController {

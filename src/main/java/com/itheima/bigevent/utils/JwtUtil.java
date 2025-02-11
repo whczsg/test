@@ -6,6 +6,9 @@ import com.auth0.jwt.algorithms.Algorithm;
 import java.util.Date;
 import java.util.Map;
 
+/*
+token工具类
+ */
 public class JwtUtil {
 
     private static final String KEY = "itheima";

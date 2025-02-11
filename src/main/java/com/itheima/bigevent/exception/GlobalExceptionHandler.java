@@ -5,6 +5,9 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+/*
+异常处理类
+ */
 @RestControllerAdvice//全局范围内处理控制层的异常，并以json，xml返回客户端
 public class GlobalExceptionHandler {
 

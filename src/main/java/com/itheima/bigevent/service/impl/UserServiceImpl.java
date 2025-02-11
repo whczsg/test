@@ -7,6 +7,9 @@ import com.itheima.bigevent.utils.Md5Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+/*
+用户服务子类
+ */
 @Service
 public class UserServiceImpl implements UserService {
     @Autowired

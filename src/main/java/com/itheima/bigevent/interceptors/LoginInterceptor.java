@@ -2,13 +2,16 @@ package com.itheima.bigevent.interceptors;
 
 import com.itheima.bigevent.pojo.Result;
 import com.itheima.bigevent.utils.JwtUtil;
+import com.itheima.bigevent.utils.ThreadLocalUtil;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 import java.util.Map;
-
+/*
+拦截器类，由mvc自动调用
+ */
 @Component
 public class LoginInterceptor implements HandlerInterceptor {
 
@@ -22,6 +25,10 @@ public class LoginInterceptor implements HandlerInterceptor {
         //验证token
         try {
             Map<String, Object> claims = JwtUtil.parseToken(token);
+
+            //把业务数据存储到ThreadLocal中
+            ThreadLocalUtil.set(claims);
+
             //放行
             return true;
         } catch (Exception e) {
@@ -30,5 +37,14 @@ public class LoginInterceptor implements HandlerInterceptor {
             //不放行
             return false;
         }
+    }
+
+    /*
+    清空ThreadLocal中的数据
+    afterCompletion 表示请求处理完成后所执行的操作，最后阶段自动调用
+     */
+    @Override
+    public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
+        ThreadLocalUtil.remove();
     }
 }
