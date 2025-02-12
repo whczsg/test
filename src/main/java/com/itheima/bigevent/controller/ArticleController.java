@@ -28,7 +28,10 @@ public class ArticleController {
         return Result.success();
     }
 
-    //文章列表分页查询
+    /*
+    文章列表分页查询
+    @RequestParam(required = false)声明参数是否必传
+     */
     @GetMapping
     public Result<PageBean<Article>> list(
             Integer pageNum,
@@ -38,5 +41,28 @@ public class ArticleController {
     ){
        PageBean<Article> pb = articleService.list(pageNum,pageSize,categoryId,state);
        return Result.success(pb);
+    }
+
+    //获取文章详情
+    @GetMapping("/detail")
+    public Result<Article> get(String id){
+
+       Article a = articleService.get(id);
+       return Result.success(a);
+    }
+
+    //更新文章
+    @PutMapping
+    public Result update(@RequestBody @Validated(Article.update.class) Article article){
+
+        articleService.update(article);
+        return Result.success();
+    }
+
+    //删除文章
+    @DeleteMapping
+    public Result delete(String id){
+        articleService.delete(id);
+        return Result.success();
     }
 }

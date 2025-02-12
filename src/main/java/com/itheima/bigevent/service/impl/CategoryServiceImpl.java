@@ -42,6 +42,7 @@ public class CategoryServiceImpl implements CategoryService {
         return categoryMapper.list(userId);
     }
 
+    //根据id查询
     @Override
     public Category findById(Integer id) {
         Category c = categoryMapper.findById(id);
