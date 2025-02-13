@@ -1,6 +1,7 @@
 package com.itheima.bigevent.controller;
 
 import com.itheima.bigevent.pojo.Result;
+import com.itheima.bigevent.utils.AilOssUtil;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
@@ -21,7 +22,8 @@ public class FileUploadController {
 
         //保证文件的名字是唯一的，从而防止文件覆盖
         String filename = UUID.randomUUID().toString()+originalFilename.substring(originalFilename.lastIndexOf("."));
-        file.transferTo(new File("C:\\Users\\w'h'j\\Desktop\\files\\"+filename));
-        return Result.success("url访问地址……");
+        //file.transferTo(new File("C:\\Users\\w'h'j\\Desktop\\files\\"+filename));
+        String url = AilOssUtil.uploadFile(filename, file.getOriginalFilename());
+        return Result.success("url");
     }
 }
