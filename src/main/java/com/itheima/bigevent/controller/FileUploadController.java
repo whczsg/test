@@ -24,6 +24,6 @@ public class FileUploadController {
         String filename = UUID.randomUUID().toString()+originalFilename.substring(originalFilename.lastIndexOf("."));
         //file.transferTo(new File("C:\\Users\\w'h'j\\Desktop\\files\\"+filename));
         String url = AilOssUtil.uploadFile(filename, file.getOriginalFilename());
-        return Result.success("url");
+        return Result.success(url);
     }
 }
